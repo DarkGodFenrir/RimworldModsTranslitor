@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Rimworld Mod Translitor</title>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="/eel.js"></script>
+        <script type="text/javascript" src="web.js"></script>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">
+        <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    </head>
+    <body>
+        <div class="left_panel">
+            <div class="left_panel_logo">Rimworld Mod Translitor</div>
+            <div class="left_panel_content">
+                <div class="Folder_path">
+                    <div class = "left_text">Path to mods:</div>
+                    <input class = "left_input"  value="" title="Enter path to *\\Steam\\steamapps\\workshop\\content\\294100" placeholder="Enter path to *\\Steam\\steamapps\\workshop\\content\\294100">
+                    <button class="left_top_button_2" id="setPath">Search</button>
+                </div>
+                <div class="left_panel_top_tabs">
+                    <button class="left_top_button">Steam</button>
+                    <button class="left_top_button" disabled="disabled">Local</button>
+                </div>
+                <div class="modListText">
+                    <div class = "left_text">Mod list:</div>
+                    <div class = "ModsList">
+                        <div class = "mod">
+                            <image class="modIcon" src="icon.png"></image>
+                            <div class = "modInfo">
+                                <div class = "modName">Mod Name</div>
+                                <div class = "modId">Mod ID</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right_panel">
+            <div class="right_panel_content">
+                <div class="right_panel_top_tabs">
+                    <button class="right_top_button">About</button>
+                    <button class="right_top_button">Translate</button>
+                </div>
+                <div class="right_panel_text">
+                    <div class="right_top_container">
+                        <img class="right_text_img" src="icon.png">
+                        <div class="right_text_main_info">
+                            <div class="right_text_name">Mod Name</div>
+                            <div class="right_text_id">Mod ID</div>
+                            <div class="right_text_version">Supported versions</div>
+                        </div>
+                    </div>
+                    <div class="right_text_description">Description</div>
+                    <div class="right_description"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

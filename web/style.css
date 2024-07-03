@@ -1,0 +1,216 @@
+body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+}
+
+.left_panel {
+    width: 20%;
+    height: 100vh;
+    background-color: rgb(33, 33, 33)
+}
+
+.left_panel_top_tabs {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left_panel_logo {
+    width: 98%;
+    height: 2vw;
+    font-size: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.Folder_path {
+    width: 100%;
+    height: auto;
+    padding-bottom: 3px;
+    /* padding-bottom: 1vw; */
+    /* display: flex; */
+    align-items: center;
+}
+
+.left_text {
+    width: 100%;
+    height: auto;
+    /* background-color: rgb(141, 141, 247); */
+    color: white;
+    margin: 0px;
+    margin-top: 3px;
+}
+
+.left_input {
+    width: calc(100% - 10px);
+    height: 20px;
+    /* background-color: rgb(141, 141, 247); */
+    background-color: white;
+    margin: 0px;
+    margin-bottom: 3px;
+}
+
+.left_input:hover{display: block;}
+
+.left_top_button_2 {
+    width: 100%;
+    height: 25px;
+    /* background-color: rgb(141, 141, 247); */
+    background-color: white;
+    margin: 0px;
+    margin-bottom: 3px;
+}
+
+.left_top_button,
+.right_top_button {
+    width: 50%;
+    height: 25px;
+    /* background-color: rgb(141, 141, 247); */
+    background-color: white;
+    margin: 0px;
+    margin-bottom: 3px;
+}
+
+.left_top_button:hover,
+.left_top_button_2:hover,
+.right_top_button:hover {
+    color: white; 
+    background-color: rgb(2, 2, 56);
+    cursor: pointer;
+}
+
+.right_panel_top_tabs{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    width: calc(100% - 10px);
+}
+
+
+.left_panel_content {
+    width: calc(100% - 10px);
+    margin: 5px;
+    height: calc(100% - 5vw);
+    background-color: rgb(57, 57, 60);
+    /* скрыть блок */
+}
+
+.ModsList{
+    height: calc(70vh - 40px);
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.ModsList::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ModsList::-webkit-scrollbar-thumb {
+    background-color: rgb(92, 92, 211);
+    border-radius: 4px;
+}
+
+.ModsList::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.mod{
+    width: 100%;
+    min-height: 40px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.mod:hover{
+    color: white; 
+    background-color: rgb(2, 2, 56);
+    cursor: pointer;
+}
+
+.modIcon {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 32px;
+    height: 32px;
+}
+
+.modName{
+    font-size: 1.8vw;
+}
+
+
+.modId{
+    font-size: 1.5vw;
+    color: gray;
+}
+
+.right_panel {
+    width: calc(80% - 10px);
+    margin-left: 10px;
+    height: calc(100vh - 20px);
+    background-color: rgb(255, 255, 255);
+}
+
+.right_panel_content {
+    display: none;
+    flex-direction: column;
+}
+
+.right_top_container{
+    /*расположение обьектов в строчку  */
+    display: flex;
+    flex-direction: row;
+    width: calc(100% - 30px);
+    margin-top: 5px;
+    /* обводка элемента и скругление углов */
+    border-radius: 5px;
+    border: 2px solid #d3d3d3;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+}
+
+.right_text_img{
+    margin-right: 5px;
+}
+
+/* set modImage as background for the right_panel */
+.right_text_img{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.right_description{
+    width: calc(100% - 30px);
+    height: 65vh;
+    border-radius: 5px;
+    border: 2px solid #d3d3d3;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+@media screen and (min-width: 1000px) {
+    .modName{
+        font-size: 20px;
+    }
+    
+    .modId{
+        font-size: 16px;
+    }
+}
+
+ 
