@@ -5,13 +5,13 @@ import os
 global pathToMainFolder
 @eel.expose
 def getPath(fromInput):
-    #проверить есть ли такие пути
-    print(fromInput)
-    if fromInput != "False":
+    # print(fromInput)
+    if fromInput != "False" and fromInput is not None:
         paths = [fromInput]
+    elif fromInput is None:
+        return "Path not found"
     else:
         paths = ["C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\294100", "C:\\Program Files\\Steam\\steamapps\\workshop\\content\\294100"]
-
     for path in paths:
         if os.path.exists(path):
             global pathToMainFolder
@@ -27,7 +27,7 @@ def getModList(path):
         # get name tag from xml
         pathToXml = f"{path}\\{mod}\\About\\About.xml"
         pathToIcon = f"{path}\\{mod}\\About\\ModIcon.png"
-        print(pathToXml)
+        # print(pathToXml)
         if os.path.exists(pathToXml):
             if os.path.exists(pathToIcon):
                 with open(pathToIcon, 'rb') as image:
@@ -41,15 +41,19 @@ def getModList(path):
                 name = content.split("<name>")[1].split("</name>")[0]
                 modAray = [f"{path}\\{mod}", mod, name, pathToIcon]
                 modsNames.append(modAray)
-    
+        
     return modsNames
 
 @eel.expose
 def getModInfo(modId):
     pathToFolder = f"{pathToMainFolder}\\{modId}"
+    pathToLenguages = f"{pathToFolder}\\Languages"
 
     if os.path.exists(f"{pathToFolder}\\About\\About.xml"):
         # get image Preview with base64
+        if os.path.exists(pathToLenguages):
+            lenguages = os.listdir(pathToLenguages)
+            # print(lenguages)
         with open(f"{pathToFolder}\\About\\Preview.png", 'rb') as image:
             f = image.read()
             b = bytearray(f)
@@ -62,9 +66,10 @@ def getModInfo(modId):
             supportedVersions = content.split("<supportedVersions>")[1].split("</supportedVersions>")[0]
             supportedVersions = supportedVersions.replace("<li>", "")
             supportedVersions = supportedVersions.replace("</li>\n", " ")
-
-    
-    return [name, description, supportedVersions, image]
+    returnArray = [name, description, supportedVersions, image, lenguages]
+    # returnArrayWithoutImage = [name, description, supportedVersions, lenguages]
+    # print(returnArrayWithoutImage)
+    return returnArray
 
 eel.init('web')
 eel.start('index.html', size=(800, 600))

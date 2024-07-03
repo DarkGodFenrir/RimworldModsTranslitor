@@ -19,7 +19,7 @@
                     <button class="left_top_button_2" id="setPath">Search</button>
                 </div>
                 <div class="left_panel_top_tabs">
-                    <button class="left_top_button">Steam</button>
+                    <button class="left_top_button" id = "Steam">Steam</button>
                     <button class="left_top_button" disabled="disabled">Local</button>
                 </div>
                 <div class="modListText">
@@ -39,8 +39,8 @@
         <div class="right_panel">
             <div class="right_panel_content">
                 <div class="right_panel_top_tabs">
-                    <button class="right_top_button">About</button>
-                    <button class="right_top_button">Translate</button>
+                    <button class="right_top_button" id = "About">About</button>
+                    <button class="right_top_button" id =  Translate>Translate</button>
                 </div>
                 <div class="right_panel_text">
                     <div class="right_top_container">
@@ -53,6 +53,18 @@
                     </div>
                     <div class="right_text_description">Description</div>
                     <div class="right_description"></div>
+                </div>
+                <div class = "right_translate_container">
+                    <div class = "right_translate_info_container" style = "display: flex; flex-direction: column">
+                        <div style = "display: flex; justify-content: space-between; width: 100%; height: 20px;">
+                            <div>Languages:</div>
+                            <button class="left_top_button" style="width: 150px; height: 20px;">Add language</button>
+                        </div>
+                        <div class="right_translate_list"></div>
+                    </div>
+                    <div class="right_translate_text">Translate</div>
+                    <textarea class="right_translate_input"></textarea>
+                    <div class="right_translate_button">Translate</div>
                 </div>
             </div>
         </div>

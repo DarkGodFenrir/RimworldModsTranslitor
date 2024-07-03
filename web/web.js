@@ -1,14 +1,14 @@
 async function getFolder(fromInput) {
-    console.log(fromInput)
+    // console.log(fromInput)
     path = await eel.getPath(fromInput)();
-    if(path == "Path no found"){
-        path = ""
-    }
-    var input = document.getElementsByClassName('left_input')
-    input[0].setAttribute('value', path)
-    input[0].setAttribute('title', path)
 
-    if(path != "Path no found"){
+    console.log(path)
+
+    if(path != "Path not found"){
+        var input = document.getElementsByClassName('left_input')
+        input[0].setAttribute('value', path)
+        input[0].setAttribute('title', path)
+
         modList = await eel.getModList(path)();
 
         var modsListDiv = document.getElementsByClassName('ModsList')[0];
@@ -35,6 +35,8 @@ async function getFolder(fromInput) {
             var modIdDiv = document.createElement('div');
             modIdDiv.className = 'modId';
             modIdDiv.textContent = mod[1];
+            
+            
 
             modInfoDiv.appendChild(modNameDiv);
             modInfoDiv.appendChild(modIdDiv);
@@ -43,34 +45,100 @@ async function getFolder(fromInput) {
             modsListDiv.appendChild(modDiv);
 
             modDiv.addEventListener('click', function() {
+                var aboutButton = document.getElementById('About');
+                aboutButton.style.backgroundColor = "rgb(92, 92, 211)";
+
+                var translateButton = document.getElementById('Translate');
+                translateButton.style.backgroundColor = "white";
+
+
+                var right_about_container = document.getElementsByClassName('right_panel_text')[0];
+                right_about_container.style.display = 'flex';
+                right_about_container.style.flexDirection = 'column';
+
+                var right_translate_container = document.getElementsByClassName('right_translate_container')[0];
+                right_translate_container.style.display = 'none';
+
                 const modId = this.querySelector('.modId').textContent;
                 getModInfo(modId);
             });
         }
     } else {
+        var input = document.getElementsByClassName('left_input')
+        input[0].setAttribute('value', "")
+        input[0].setAttribute('title', "Enter path to *\\Steam\\steamapps\\workshop\\content\\294100")
+
         var modsListDiv = document.getElementsByClassName('ModsList')[0];
         modsListDiv.innerHTML = '';
 
         var modDiv = document.createElement('div');
         modDiv.className = 'noFoundText';
         modDiv.textContent = "Path no found";
+        modDiv.style.color = "red";
 
         modsListDiv.appendChild(modDiv);
     }
 }
 
+function showAbout() {
+    var aboutButton = document.getElementById('About');
+    aboutButton.style.backgroundColor = "rgb(92, 92, 211)";
+
+    var translateButton = document.getElementById('Translate');
+    translateButton.style.backgroundColor = "white";
+
+    var right_about_container = document.getElementsByClassName('right_panel_text')[0];
+    right_about_container.style.display = 'flex';
+    right_about_container.style.flexDirection = 'column';
+
+    var right_translate_container = document.getElementsByClassName('right_translate_container')[0];
+    right_translate_container.style.display = 'none';
+    rigght_translate_container.style.flexDirection = 'column';
+}
+
+function showTranslate() {
+    var translateButton = document.getElementById('Translate');
+    translateButton.style.backgroundColor = "rgb(92, 92, 211)";
+
+    var aboutButton = document.getElementById('About');
+    aboutButton.style.backgroundColor = "white";
+
+    var right_about_container = document.getElementsByClassName('right_panel_text')[0];
+    right_about_container.style.display = 'none';
+
+    var right_translate_container = document.getElementsByClassName('right_translate_container')[0];
+    right_translate_container.style.display = 'flex';
+}
+
 function setListevers() {
     var searchButton = document.getElementById('setPath');
-    var inputPath = document.getElementsByClassName('left_input');
+    var inputPath = document.getElementsByClassName('left_input')[0];
     
     searchButton.addEventListener('click', function() {
+        console.log(inputPath.value)
         getFolder(inputPath.value);
     });
+
+    var steamButton = document.getElementById('Steam');
+    steamButton.style.backgroundColor = "rgb(92, 92, 211)";
+
+    var aboutButton = document.getElementById('About');
+    aboutButton.style.backgroundColor = "rgb(92, 92, 211)";
+
+    aboutButton.addEventListener('click', showAbout);
+
+    translateButton = document.getElementById('Translate');
+    translateButton.addEventListener('click', showTranslate);
 }
 
 window.onload = getFolder("False");
-DOMContentLoaded = setListevers();
+// DOMContentLoaded = setListevers();
 // window.DOMContentLoaded = setListevers();
+document.onreadystatechange = function() {
+    if (document.readyState == "complete") {
+        setListevers();
+    }
+}
 
 function bbcodeToHtml(text) {
     return text
@@ -125,4 +193,18 @@ async function getModInfo(modId) {
 
     var modImage = document.getElementsByClassName('right_text_img')[0];
     modImage.src = modInfo[3];
+
+    var languagesDiv = document.getElementsByClassName('right_translate_list')[0];
+    languagesDiv.innerHTML = '';
+    
+    console.log(modInfo[4])
+    //если mod[4] - это массив, то вставляем его
+    if(Array.isArray(modInfo[4])){
+        for (var j = 0; j < modInfo[4].length; j++) {
+            var modLanguageDiv = document.createElement('button');
+            modLanguageDiv.className = 'modLanguage';
+            modLanguageDiv.textContent = modInfo[4][j];
+            languagesDiv.appendChild(modLanguageDiv);
+        }
+    }
 }
